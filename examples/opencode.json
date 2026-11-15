@@ -1,0 +1,41 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permissions": [
+    { "action": "shell", "resource": "*", "effect": "ask" },
+    { "action": "shell", "resource": "cat *", "effect": "allow" },
+    { "action": "shell", "resource": "ls -la *", "effect": "allow" },
+    { "action": "shell", "resource": "git status *", "effect": "allow" },
+    { "action": "shell", "resource": "git diff *", "effect": "allow" },
+    { "action": "shell", "resource": "git push *", "effect": "deny" }
+  ],
+  "provider": {
+    "local-browser-mirror": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "BrowserMirrorAgents (Local)",
+      "apiType": "chat-completions",
+      "options": {
+        "baseURL": "http://127.0.0.1:8000/v1",
+        "apiKey": "unused"
+      },
+      "models": {
+        "BitrixGPT": {
+          "name": "BitrixGPT Agent",
+          "tool_call": true
+        },
+        "DeepSeek Chat": {
+          "name": "DeepSeek Agent",
+          "tool_call": true
+        },
+        "Qwen": {
+          "name": "Qwen Agent",
+          "tool_call": true
+        },
+        "GoogleAI": {
+          "name": "GoogleAI",
+          "tool_call": true
+        }
+      }
+    }
+  },
+  "model": "local-browser-mirror/BitrixGPT"
+}
